@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using WaifuLabs.NET.Model;
@@ -25,10 +26,15 @@ namespace WaifuLabs.NET
             Console.WriteLine("https://www.patreon.com/bePatron?u=23037728");
             Console.WriteLine("https://ko-fi.com/B0B5106CI\n");
 
+            if(args.Length > 0)
+            {
+                savePath = args[0];
+            }
+
             Console.WriteLine("Performing step 1 of waifu generation...");
             GenerateWaifuRequest request = new GenerateWaifuRequest();
             request.step = 0;
-            NewWaifusResponse response = generateWaifu(request);
+            NewWaifusResponse response = GenerateWaifu(request);
 
             int nextWaifu;
             Waifu waifu;
@@ -39,7 +45,7 @@ namespace WaifuLabs.NET
                 waifu = response.newGirls[nextWaifu];
                 request.step = i - 1;
                 request.currentGirl = waifu.seeds;
-                response = generateWaifu(request);
+                response = GenerateWaifu(request);
             }
 
             Console.WriteLine("Getting finished waifu...");
@@ -48,7 +54,7 @@ namespace WaifuLabs.NET
             request.step = 4;
             request.size = 512;
             request.currentGirl = waifu.seeds;
-            BigWaifuResponse finalWaifu = generateBigWaifu(request);
+            BigWaifuResponse finalWaifu = GenerateBigWaifu(request);
 
             Console.WriteLine("Saving waifu to " + savePath);
             byte[] bytes = Convert.FromBase64String(finalWaifu.girl);
@@ -61,7 +67,7 @@ namespace WaifuLabs.NET
             Console.WriteLine("Generation complete!");            
         }
 
-        static NewWaifusResponse generateWaifu(GenerateWaifuRequest request)
+        static NewWaifusResponse GenerateWaifu(GenerateWaifuRequest request)
         {
             string json = JsonConvert.SerializeObject(request);
             StringContent httpRequest = new StringContent(json);
@@ -70,7 +76,7 @@ namespace WaifuLabs.NET
             return JsonConvert.DeserializeObject<NewWaifusResponse>(httpResponse.Content.ReadAsStringAsync().Result);
         }
 
-        static BigWaifuResponse generateBigWaifu(GenerateWaifuRequest request)
+        static BigWaifuResponse GenerateBigWaifu(GenerateWaifuRequest request)
         {
             string json = JsonConvert.SerializeObject(request);
             StringContent httpRequest = new StringContent(json);
