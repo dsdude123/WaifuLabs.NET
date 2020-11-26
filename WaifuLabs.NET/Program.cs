@@ -22,7 +22,7 @@ namespace WaifuLabs.NET
             Console.WriteLine("(c) 2020 dsdude123");
             Console.WriteLine("https://github.com/dsdude123/WaifuLabs.NET\n");
             Console.WriteLine("This program is powered by Waifu Labs which is made by Sizigi Studios.");
-            Console.WriteLine("Please consider supporting them on Patron or Ko-fi to keep this service avalible.");
+            Console.WriteLine("Please consider supporting them on Patreon or Ko-fi to keep this service avalible.");
             Console.WriteLine("https://www.patreon.com/bePatron?u=23037728");
             Console.WriteLine("https://ko-fi.com/B0B5106CI\n");
 
