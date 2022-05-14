@@ -6,8 +6,8 @@ namespace WaifuLabs.NET.Model
 {
     public class Waifu
     {
-        public object[] seeds { get; set; }
-        public String image { get; set; } // base64
+        public string seeds { get; set; }
+        public string image { get; set; } // base64
     }
 
 }

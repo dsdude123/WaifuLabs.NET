@@ -4,8 +4,9 @@ using System.Text;
 
 namespace WaifuLabs.NET.Model
 {
-    public class NewWaifusResponse
+    public class ResponseBody
     {
-        public List<Waifu> newGirls { get; set; }
+        public ResponseData data { get; set; }
+        public string Id { get; set; }
     }
 }
