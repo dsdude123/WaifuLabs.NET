@@ -1,7 +1,5 @@
 ﻿# WaifuLabs.NET
 
-**THIS TOOL CURRENTLY DOESN'T WORK. WAIFU LABS NO LONGER HAS AN API**
-
 This unofficial tool is for generating anime girls using Waifu Labs. The tool queries the Waifu Labs API to generate a random anime girl. 
 
 This relies on Waifu Labs which is made by Sizigi Studios. 
